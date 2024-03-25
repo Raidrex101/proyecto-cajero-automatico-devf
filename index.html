@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="./CSS/Styles.css"
+      rel="stylesheet"
+    />
+    <title>Login Cajero</title>
+  </head>
+  <body>
+    
+    <strong id="error_login" class="alert alert-danger hidden">MENSAJE DE ERROR</strong>
+    <form id="login">
+      <span class="logo-vago-login">🏦</span>
+      <label for="login_cuenta">Numero de cuenta</label>
+      <input id="login_cuenta" name="email" autocomplete="new-username" />
+      <label for="password">Contraseña</label>
+      <input id="password" name="password" type="password"  autocomplete="new-password"/>
+      <!-- por default el primer boton de una etiqueta form es de tipo input  -->      
+      <button type="submit">Ingresar</button>
+    </form>
+    <script type="module" src="./login.js"></script>
+  </body>
+</html>
