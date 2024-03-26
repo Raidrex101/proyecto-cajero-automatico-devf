@@ -7,6 +7,7 @@ const contenidoDelModal = document.querySelector("#contenido_del_modal")
 const botonSalir = document.querySelector("#salir")
 const botonCerrarModal = modal.querySelector("#cerrar")
 const botonMovimientos = document.querySelector("#movimientos")
+const botonPin = document.querySelector("#pin")
 
 let userdata = {};
 
@@ -84,8 +85,12 @@ botonSalir.addEventListener('click', function () {
 botonMovimientos.addEventListener('click', function(){
     const textoDelModal = `
     <div>
-    <h2> ${userdata.historialRetiros} </h2>
+    <h3> Retiros:${userdata.historialRetiros.map(retiro=> `<li> Monto: ${retiro.monto}</li>`).join('')} </h3>
     </div>
+    <div>
+    <h3> Depositos: ${userdata.historialDepositos.map(deposito=> `<li> Monto: ${deposito.monto}</li>`).join('')} </h3>
+    </div>
+    
     `
     abrirModal(textoDelModal)
 })
