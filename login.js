@@ -44,11 +44,11 @@ buttonLogin.addEventListener("click", function(e){
  
     if (!correctUser) {
         
-        alert("Alto ahi ampon!")  
+        alert("Datos incorrectos")  
 
     } else  {
         
-        sessionStorage.setItem("correctUser", JSON.stringify(correctUser))
+        sessionStorage.setItem("correctUser", JSON.stringify(correctUser)) 
         window.location.href = "/atm.html"
     }
     

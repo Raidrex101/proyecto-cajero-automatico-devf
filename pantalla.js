@@ -23,17 +23,34 @@ form.addEventListener("submit", function (e) {
         userdata.historialDepositos = []
 
     }
-    if (Number(deposito) !== 0) {
-        const depositado = {monto: Number(deposito)}
-        userdata.historialDepositos.push(depositado)
+
+    if (isNumber(Number(deposito))) {
+
+        if (Number(deposito) !== 0) {
+            const depositado = {monto: Number(deposito)}
+            userdata.historialDepositos.push(depositado)
+        }
+        if (userdata.saldo > 990) {
+           alert("su cuenta no puede tener mas de 990 MXN - OPERACION CANCELADA -")
+            userdata.saldo = Number(990)
+
+        }else {
+        sessionStorage.setItem("correctUser", JSON.stringify(userdata))
+        window.location.href = "./atm.html"
+        }
+
     }
-    if (userdata.saldo >= 990) {
-       alert("su cuenta no puede tener mas de 990 MXN se regresara la candidad de su deposito que exeda este limite")
-        userdata.saldo = Number(990)
+    else {
+        alert("Cantidad invalida")
     }
-    sessionStorage.setItem("correctUser", JSON.stringify(userdata))
-    window.location.href = "./atm.html"
+    
+    
 })
+
+function isNumber(valor) {
+    return !isNaN(valor)
+    
+}
 
 botonRegreso.addEventListener('click', function () {
     window.location.href = "/atm.html"

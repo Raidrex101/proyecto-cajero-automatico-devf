@@ -38,6 +38,7 @@ function abrirModal(textoDelModal) {
     conmutarClase(modal, "close_modal")
     contenidoDelModal.innerHTML = textoDelModal
 }
+
 botonCerrarModal.addEventListener('click', function () {
     conmutarClase(modal, 'close_modal')
     fondoDeModal.style.display = "none"
@@ -83,14 +84,43 @@ botonSalir.addEventListener('click', function () {
 })
 
 botonMovimientos.addEventListener('click', function(){
+    
+    if (!!userdata.historialRetiros && !!userdata.historialDepositos) {
     const textoDelModal = `
     <div>
-    <h3> Retiros:${userdata.historialRetiros.map(retiro=> `<li> Monto: ${retiro.monto}</li>`).join('')} </h3>
+    <h3> Retiros: ${userdata.historialRetiros.map(retiro=> `<li> Monto: ${retiro.monto}</li>`).join('')} </h3>
     </div>
     <div>
     <h3> Depositos: ${userdata.historialDepositos.map(deposito=> `<li> Monto: ${deposito.monto}</li>`).join('')} </h3>
-    </div>
-    
-    `
+    </div>`
     abrirModal(textoDelModal)
+    }
+    else if (!userdata.historialDepositos) {
+        const textoDelModal = `
+        <div>
+    <h3> Retiros: ${userdata.historialRetiros.map(retiro=> `<li> Monto: ${retiro.monto}</li>`).join('')} </h3>
+    </div>`
+
+    abrirModal(textoDelModal)
+
+    }else if (!userdata.historialRetiros) {
+        const textoDelModal=`
+        <div>
+    <h3> Depositos: ${userdata.historialDepositos.map(deposito=> `<li> Monto: ${deposito.monto}</li>`).join('')} </h3>
+    </div>`
+    abrirModal(textoDelModal)
+    }
+    
 })
+
+botonPin.addEventListener('click', function(){
+    const textoDelModal = `
+    <form id="pin">
+    <label for= "cambio_de_pin"> Ingrese su nuevo pin de 4 digitos</label>
+    <input id= "cambio_de_pin" type="password" autocomplete="new-password"/>
+    <button type="submit">Confirmar</button>
+    </form> `
+    abrirModal(textoDelModal)    
+})
+
+
